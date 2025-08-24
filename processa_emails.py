@@ -4,10 +4,6 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
 def ler_txt(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         return f.read()
@@ -38,5 +34,5 @@ def processar_email(entrada):
         else:
             raise ValueError("Formato não suportado.")
     else:
-        texto = entrada  # texto direto
+        texto = entrada
     return preprocessar_texto(texto)

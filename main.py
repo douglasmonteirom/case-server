@@ -6,6 +6,12 @@ import openai
 from processa_emails import processar_email
 import os
 import json
+import nltk
+
+nltk.download("punkt")
+nltk.download("stopwords")
+nltk.download("wordnet")
+nltk.download("omw-1.4")
 
 try:
     dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
@@ -26,15 +32,13 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://case-client-9wcrzx18r-douglas-projects-a646adef.vercel.app/"],
+    allow_origins=["https://case-client-9wcrzx18r-douglas-projects-a646adef.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
 client = openai.OpenAI(api_key=API_KEY)
-
 
 @app.post("/processar/")
 async def processar(file: UploadFile = File(None), texto: str = Form(None)):
