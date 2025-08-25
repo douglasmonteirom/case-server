@@ -1,5 +1,4 @@
 import json
-from typing import Iterable
 from app.services.openai_service import OpenAIService
 
 class EmailAgent:
